@@ -34,6 +34,8 @@ public class Messages {
             System.out.println("MESSAGE : " + i);
 
             String messageID = generateMessageID();
+            Random rand = new Random();
+            
 
             System.out.println("Enter recipient cell number !!");
             String recipient = input.nextLine();
@@ -59,11 +61,21 @@ public class Messages {
         }
     }
 
-    private String generateMessageID() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String generateMessageID() {
+        Random rand = new Random();
+    String id = "";
+    for (int i = 0; i < 10; i++) {
+        id += rand.nextInt(10);
+    }
+    return id;
     }
 
-    private String checkRecipientCell(String recipient) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String checkRecipientCell(String recipient) {
+       if (recipient.length() <= 12 && recipient.startsWith("+27")) {
+        return "Valid number";
+    } else {
+        return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
     }
-}
+    }
+  }
+
